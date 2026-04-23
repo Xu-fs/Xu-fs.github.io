@@ -1,0 +1,138 @@
+#page-header #nav {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 56px !important;
+  padding: 0 40px !important;
+  background: rgba(218, 237, 247, 0.94) !important;
+  box-shadow: 0 8px 24px rgba(49, 82, 103, 0.12) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateY(-105%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform 0.28s ease, opacity 0.28s ease !important;
+  z-index: 1000 !important;
+}
+
+body.main-nav-visible #page-header #nav {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#page-header #nav a,
+#page-header #nav span,
+#page-header #nav i,
+#page-header #nav .site-name {
+  color: #3f474d !important;
+  text-shadow: none !important;
+}
+
+#page-header #nav #blog-info {
+  display: flex !important;
+  align-items: center !important;
+  height: 56px !important;
+}
+
+#page-header #nav #menus {
+  display: flex !important;
+  grid-column: 2 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 22px !important;
+  height: 56px !important;
+}
+
+#page-header #nav .main-preset-nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 22px !important;
+}
+
+#page-header #nav .main-preset-link {
+  min-width: 76px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 16px !important;
+  border-radius: 6px !important;
+  color: #3f474d !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+#page-header #nav .main-preset-link:hover {
+  color: #2e353a !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
+@media (max-width: 640px) {
+  #page-header #nav {
+    grid-template-columns: 1fr !important;
+    padding: 0 12px !important;
+  }
+
+  #page-header #nav #blog-info {
+    display: none !important;
+  }
+
+  #page-header #nav #menus,
+  #page-header #nav .main-preset-nav {
+    grid-column: 1 !important;
+    gap: 8px !important;
+  }
+
+  #page-header #nav .main-preset-link {
+    min-width: 64px !important;
+    padding: 0 10px !important;
+    font-size: 15px !important;
+  }
+}
+
+#page-header #site-info {
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  text-align: center !important;
+}
+
+#page-header #site-title {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 0.04em !important;
+  color: #fff !important;
+  font-size: clamp(36px, 5vw, 70px) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 6px 16px rgba(28, 70, 96, 0.32) !important;
+}
+
+#page-header #site-title .hero-title-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scale(0.96);
+  animation: heroTitleIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes heroTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
