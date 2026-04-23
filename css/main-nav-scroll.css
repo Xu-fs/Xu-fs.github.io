@@ -9,35 +9,40 @@
   width: 100% !important;
   height: 56px !important;
   padding: 0 40px !important;
-  background: rgba(218, 237, 247, 0.94) !important;
-  box-shadow: 0 8px 24px rgba(49, 82, 103, 0.12) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transform: translateY(-105%) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: transform 0.28s ease, opacity 0.28s ease !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: background 0.28s ease, box-shadow 0.28s ease !important;
   z-index: 1000 !important;
 }
 
 body.main-nav-visible #page-header #nav {
-  transform: translateY(0) !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
+  background: rgba(34, 86, 122, 0.92) !important;
+  box-shadow: 0 10px 28px rgba(10, 35, 55, 0.26) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 #page-header #nav a,
 #page-header #nav span,
 #page-header #nav i,
 #page-header #nav .site-name {
-  color: #3f474d !important;
-  text-shadow: none !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 8px rgba(6, 24, 38, 0.38) !important;
 }
 
 #page-header #nav #blog-info {
   display: flex !important;
   align-items: center !important;
   height: 56px !important;
+  min-width: max-content !important;
+  font-size: 23px !important;
+  letter-spacing: 0.03em !important;
 }
 
 #page-header #nav #menus {
@@ -45,7 +50,7 @@ body.main-nav-visible #page-header #nav {
   grid-column: 2 !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 22px !important;
+  gap: 16px !important;
   height: 56px !important;
 }
 
@@ -53,30 +58,137 @@ body.main-nav-visible #page-header #nav {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 22px !important;
+  gap: 14px !important;
+}
+
+#page-header #nav .main-friend-nav {
+  position: relative !important;
+  grid-column: 3 !important;
+  justify-self: end !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 56px !important;
+}
+
+#page-header #nav .main-friend-toggle {
+  height: 36px !important;
+  padding: 0 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 8px rgba(6, 24, 38, 0.38) !important;
+  transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease !important;
+}
+
+#page-header #nav .main-friend-toggle:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.34) !important;
+}
+
+#page-header #nav .main-friend-toggle:active {
+  transform: scale(0.94) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+#page-header #nav .main-friend-nav:hover .main-friend-toggle,
+#page-header #nav .main-friend-nav:focus-within .main-friend-toggle {
+  background: rgba(255, 255, 255, 0.28) !important;
+  border-color: rgba(255, 255, 255, 0.42) !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12) !important;
+}
+
+#page-header #nav .main-friend-panel {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  min-width: 280px !important;
+  padding: 14px !important;
+  border-radius: 14px !important;
+  background: rgba(17, 54, 82, 0.94) !important;
+  box-shadow: 0 14px 34px rgba(5, 20, 32, 0.28) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+#page-header #nav .main-friend-panel.is-hidden {
+  display: none !important;
+}
+
+#page-header #nav .main-friend-nav:hover .main-friend-panel,
+#page-header #nav .main-friend-nav:focus-within .main-friend-panel {
+  display: block !important;
+}
+
+#page-header #nav .main-friend-eyebrow {
+  margin: 0 0 10px !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+#page-header #nav .main-friend-card {
+  display: grid !important;
+  gap: 6px !important;
+  padding: 14px !important;
+  border-radius: 10px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+#page-header #nav .main-friend-card:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+#page-header #nav .main-friend-name {
+  color: #fff !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+
+#page-header #nav .main-friend-url {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+#page-header #nav .main-friend-action {
+  width: max-content !important;
+  margin-top: 6px !important;
+  padding: 6px 10px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
 }
 
 #page-header #nav .main-preset-link {
-  min-width: 76px !important;
-  height: 40px !important;
+  min-width: auto !important;
+  height: 36px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 0 16px !important;
-  border-radius: 6px !important;
-  color: #3f474d !important;
+  padding: 0 6px !important;
+  border-radius: 8px !important;
+  color: #fff !important;
   font-size: 18px !important;
-  font-weight: 500 !important;
+  font-weight: 800 !important;
   line-height: 1 !important;
   text-decoration: none !important;
   letter-spacing: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
-  text-shadow: none !important;
+  text-shadow: 0 2px 8px rgba(6, 24, 38, 0.38) !important;
 }
 
 #page-header #nav .main-preset-link:hover {
-  color: #2e353a !important;
+  color: #fff !important;
   background: rgba(255, 255, 255, 0.28) !important;
 }
 
@@ -93,7 +205,12 @@ body.main-nav-visible #page-header #nav {
   #page-header #nav #menus,
   #page-header #nav .main-preset-nav {
     grid-column: 1 !important;
+    justify-content: center !important;
     gap: 8px !important;
+  }
+
+  #page-header #nav .main-friend-nav {
+    display: none !important;
   }
 
   #page-header #nav .main-preset-link {

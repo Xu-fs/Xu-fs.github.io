@@ -10,6 +10,8 @@
   var stars = [];
   var meteors = [];
   var starCount = 170;
+  var maxMeteors = 9;
+  var meteorChance = 0.055;
 
   function random(min, max) {
     return min + Math.random() * (max - min);
@@ -67,7 +69,7 @@
   }
 
   function drawMeteors() {
-    if (Math.random() < 0.018 && meteors.length < 4) createMeteor();
+    if (Math.random() < meteorChance && meteors.length < maxMeteors) createMeteor();
 
     meteors = meteors.filter(function (meteor) {
       meteor.x -= meteor.speed;
