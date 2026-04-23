@@ -54,11 +54,17 @@ body.main-nav-visible #page-header #nav {
   height: 56px !important;
 }
 
-#page-header #nav .main-preset-nav {
+#page-header #nav .menus_items,
+#page-header #nav .menus_item_child {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 14px !important;
+}
+
+#page-header #nav .menus_item {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #page-header #nav .main-friend-nav {
@@ -168,7 +174,8 @@ body.main-nav-visible #page-header #nav {
   font-weight: 900 !important;
 }
 
-#page-header #nav .main-preset-link {
+#page-header #nav .main-preset-link,
+#page-header #nav .site-page {
   min-width: auto !important;
   height: 36px !important;
   display: inline-flex !important;
@@ -187,7 +194,8 @@ body.main-nav-visible #page-header #nav {
   text-shadow: 0 2px 8px rgba(6, 24, 38, 0.38) !important;
 }
 
-#page-header #nav .main-preset-link:hover {
+#page-header #nav .main-preset-link:hover,
+#page-header #nav .site-page:hover {
   color: #fff !important;
   background: rgba(255, 255, 255, 0.28) !important;
 }
@@ -203,6 +211,7 @@ body.main-nav-visible #page-header #nav {
   }
 
   #page-header #nav #menus,
+  #page-header #nav .menus_items,
   #page-header #nav .main-preset-nav {
     grid-column: 1 !important;
     justify-content: center !important;
@@ -213,7 +222,8 @@ body.main-nav-visible #page-header #nav {
     display: none !important;
   }
 
-  #page-header #nav .main-preset-link {
+  #page-header #nav .main-preset-link,
+  #page-header #nav .site-page {
     min-width: 64px !important;
     padding: 0 10px !important;
     font-size: 15px !important;
@@ -247,9 +257,45 @@ body.main-nav-visible #page-header #nav {
   animation: heroTitleIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+.hero-typewriter {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: min(92vw, 980px) !important;
+  min-height: 72px !important;
+  margin-top: 16px !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  font-size: clamp(18px, 2vw, 28px) !important;
+  font-weight: 700 !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 4px 14px rgba(20, 58, 82, 0.36) !important;
+}
+
+.hero-type-text {
+  display: inline-block !important;
+  min-height: 1.55em !important;
+  white-space: nowrap !important;
+}
+
+.hero-type-cursor {
+  display: inline-block !important;
+  width: 2px !important;
+  height: 1.2em !important;
+  margin-left: 7px !important;
+  background: rgba(255, 255, 255, 0.88) !important;
+  animation: heroCursorBlink 0.72s steps(2, start) infinite !important;
+}
+
 @keyframes heroTitleIn {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroCursorBlink {
+  50% {
+    opacity: 0;
   }
 }

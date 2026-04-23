@@ -1,24 +1,6 @@
 (function () {
   if (/^\/x-?garge\/?/.test(window.location.pathname)) return;
 
-  function renderPresetNav() {
-    var menus = document.getElementById("menus");
-    if (!menus || menus.querySelector(".main-preset-nav")) return;
-
-    var navLabel = "\u4e3b\u9875\u9884\u8bbe\u5bfc\u822a";
-    var car = "\uD83D\uDE97";
-    var preset = "\u9884\u8bbe";
-
-    menus.innerHTML = [
-      '<div class="main-preset-nav" aria-label="' + navLabel + '">',
-      '<a class="main-preset-link" href="/x-garge/">x-garge' + car + '</a>',
-      '<a class="main-preset-link" href="javascript:void(0)">' + preset + '2</a>',
-      '<a class="main-preset-link" href="javascript:void(0)">' + preset + '3</a>',
-      '<a class="main-preset-link" href="javascript:void(0)">' + preset + '4</a>',
-      "</div>"
-    ].join("");
-  }
-
   function renderFriendNav() {
     var nav = document.getElementById("nav");
     if (!nav || nav.querySelector(".main-friend-nav")) return;
@@ -76,14 +58,66 @@
     }).join("");
   }
 
+  function renderHeroTypewriter() {
+    var siteInfo = document.getElementById("site-info");
+    if (!siteInfo || siteInfo.querySelector(".hero-typewriter")) return;
+
+    var lines = [
+      "\u795d\u4f60\u65e9\u3001\u5348\u3001\u665a\u5b89",
+      "Good afternoon\uFF0Cgood evening\uFF0Cand good night."
+    ];
+    var typewriter = document.createElement("div");
+    typewriter.className = "hero-typewriter";
+    typewriter.setAttribute("aria-label", lines.join(" "));
+    typewriter.innerHTML = [
+      '<span class="hero-type-text"></span>',
+      '<span class="hero-type-cursor" aria-hidden="true"></span>'
+    ].join("");
+    siteInfo.appendChild(typewriter);
+
+    var target = typewriter.querySelector(".hero-type-text");
+    var lineIndex = 0;
+    var charIndex = 0;
+    var deleting = false;
+
+    function tick() {
+      var current = lines[lineIndex];
+      target.textContent = current.slice(0, charIndex);
+
+      if (!deleting && charIndex < current.length) {
+        charIndex += 1;
+        window.setTimeout(tick, 76);
+        return;
+      }
+
+      if (!deleting) {
+        deleting = true;
+        window.setTimeout(tick, 1500);
+        return;
+      }
+
+      if (charIndex > 0) {
+        charIndex -= 1;
+        window.setTimeout(tick, 42);
+        return;
+      }
+
+      deleting = false;
+      lineIndex = (lineIndex + 1) % lines.length;
+      window.setTimeout(tick, 360);
+    }
+
+    window.setTimeout(tick, 1350);
+  }
+
   function updateMainNav() {
     document.body.classList.toggle("main-nav-visible", window.scrollY > 8);
   }
 
   function initMainNav() {
-    renderPresetNav();
     renderFriendNav();
     renderHeroTitle();
+    renderHeroTypewriter();
     updateMainNav();
   }
 
