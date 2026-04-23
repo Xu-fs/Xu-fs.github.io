@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X Garage</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand-block">
+          <img class="brand-mark" src="./assets/brand-mark-graffiti.png" alt="X Garage 标志" />
+          <h1 class="brand-title">X Garage</h1>
+        </div>
+
+        <nav class="top-nav" aria-label="X Garage 导航">
+          <a class="nav-item nav-link" href="/">返回主界面</a>
+          <button class="nav-item nav-item-active" data-tab="garage" type="button">预设</button>
+          <button class="nav-item" data-tab="add" type="button">开发者模式</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="page page-active" data-page="garage">
+        <div class="toolbar-shell">
+          <div class="toolbar-head">
+            <div>
+              <p class="section-kicker">Garage tools</p>
+              <h2 class="section-title">筛选与浏览</h2>
+            </div>
+            <p class="count-text" id="countText">0 辆</p>
+          </div>
+
+          <div class="toolbar-stack">
+            <label class="search-field">
+              <span>关键词搜索</span>
+              <input id="searchInput" type="text" placeholder="搜索具体型号 / 车辆品牌 / 车模品牌 / 标签 / 备注" />
+            </label>
+
+            <div class="panel-row">
+              <div class="dropdown-card">
+                <button class="dropdown-trigger" id="sortToggle" type="button">
+                  <span>排序</span>
+                  <span class="dropdown-value" id="sortCurrentText">首字母排序</span>
+                </button>
+                <div class="dropdown-panel hidden" id="sortPanel"></div>
+              </div>
+
+              <div class="dropdown-card">
+                <button class="dropdown-trigger" id="categoryToggle" type="button">
+                  <span>分类查看</span>
+                  <span class="dropdown-value" id="categoryCurrentText">全部</span>
+                </button>
+                <div class="dropdown-panel hidden" id="categoryPanel">
+                  <div class="dropdown-section">
+                    <div class="dropdown-label">分类维度</div>
+                    <div class="chip-grid" id="categoryFieldOptions"></div>
+                  </div>
+                  <div class="dropdown-section">
+                    <div class="dropdown-label">分类值</div>
+                    <div class="chip-grid" id="categoryValueOptions"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="garage-section">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Garage</p>
+              <h2 class="section-title">车库</h2>
+            </div>
+          </div>
+          <div class="garage-grid" id="garageGrid"></div>
+          <div class="empty-state hidden" id="garageEmptyState">
+            <h3>还没有匹配的车辆</h3>
+            <p>换个关键词试试，或者进入开发者模式添加车辆。</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" data-page="add">
+        <div class="page-hero warm-hero">
+          <p class="eyebrow">Developer mode</p>
+          <h2>添加车辆</h2>
+          <p>这里对应之前的添加模式，可录入图片、品牌、型号、颜色、标签、购买信息和备注。</p>
+        </div>
+
+        <form class="editor-card form-shell" id="vehicleForm">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Vehicle form</p>
+              <h2 class="section-title">录入车辆信息</h2>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-block full-width">
+              <label>车辆图片（可多选）</label>
+              <div class="upload-box">
+                <input id="imageInput" type="file" accept="image/*" multiple />
+                <p>点击选择图片，第一张自动作为封面。</p>
+              </div>
+              <div class="thumb-strip" id="imagePreviewList"></div>
+            </div>
+
+            <label class="form-block">
+              <span>车模品牌</span>
+              <input name="modelBrand" type="text" placeholder="例如：MINI GT" />
+            </label>
+
+            <label class="form-block">
+              <span>编号</span>
+              <input name="serialNumber" type="text" placeholder="例如：1064" />
+            </label>
+
+            <label class="form-block">
+              <span>车辆品牌</span>
+              <input name="vehicleBrand" type="text" placeholder="例如：兰博基尼" />
+            </label>
+
+            <label class="form-block">
+              <span>具体型号</span>
+              <input name="specificModel" type="text" placeholder="例如：飓风GT3 EVO2" />
+            </label>
+
+            <label class="form-block">
+              <span>颜色</span>
+              <input name="colorText" type="text" placeholder="例如：紫色、绿色" />
+              <small>用逗号、顿号或空格分隔多个颜色。</small>
+            </label>
+
+            <label class="form-block">
+              <span>分类标签</span>
+              <input name="tagText" type="text" placeholder="例如：GT3、赛道、限量" />
+              <small>用逗号、顿号或空格分隔多个标签。</small>
+            </label>
+
+            <label class="form-block">
+              <span>购入时间</span>
+              <input name="purchaseDate" type="date" />
+            </label>
+
+            <label class="form-block">
+              <span>购入价格</span>
+              <input name="purchasePrice" type="text" placeholder="例如：399元" />
+            </label>
+
+            <label class="form-block full-width">
+              <span>备注</span>
+              <textarea name="note" rows="4" placeholder="可以填写这台车的来历、收藏信息或其他备注"></textarea>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">确认添加</button>
+            <button class="ghost-button" type="button" id="resetVehicleButton">重置表单</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal hidden" id="detailModal">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card detail-modal-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="关闭">×</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="editModal">
+    <div class="modal-backdrop" data-close-edit></div>
+    <div class="modal-card detail-modal-card">
+      <button class="modal-close" type="button" data-close-edit aria-label="关闭">×</button>
+      <div class="modal-header">
+        <p class="eyebrow">Edit</p>
+        <h2 class="section-title">编辑车辆</h2>
+      </div>
+      <form class="editor-card compact-editor" id="editVehicleForm"></form>
+    </div>
+  </div>
+
+  <template id="editorFormTemplate">
+    <div class="form-grid">
+      <div class="form-block full-width">
+        <label>车辆图片（可多选）</label>
+        <div class="upload-box">
+          <input data-image-input type="file" accept="image/*" multiple />
+          <p>点击选择图片，第一张自动作为封面。</p>
+        </div>
+        <div class="thumb-strip" data-image-preview-list></div>
+      </div>
+
+      <label class="form-block">
+        <span>车模品牌</span>
+        <input name="modelBrand" type="text" />
+      </label>
+      <label class="form-block">
+        <span>编号</span>
+        <input name="serialNumber" type="text" />
+      </label>
+      <label class="form-block">
+        <span>车辆品牌</span>
+        <input name="vehicleBrand" type="text" />
+      </label>
+      <label class="form-block">
+        <span>具体型号</span>
+        <input name="specificModel" type="text" />
+      </label>
+      <label class="form-block">
+        <span>颜色</span>
+        <input name="colorText" type="text" />
+      </label>
+      <label class="form-block">
+        <span>分类标签</span>
+        <input name="tagText" type="text" />
+      </label>
+      <label class="form-block">
+        <span>购入时间</span>
+        <input name="purchaseDate" type="date" />
+      </label>
+      <label class="form-block">
+        <span>购入价格</span>
+        <input name="purchasePrice" type="text" />
+      </label>
+      <label class="form-block full-width">
+        <span>备注</span>
+        <textarea name="note" rows="4"></textarea>
+      </label>
+    </div>
+    <div class="form-actions">
+      <button class="primary-button" type="submit">保存修改</button>
+    </div>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
