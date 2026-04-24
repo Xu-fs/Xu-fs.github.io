@@ -1,0 +1,27 @@
+/* Minecraft Netherite Sword - https://www.cursors-4u.com/cursor/minecraft-netherite-sword */
+html.cursor-sword-enabled *,
+html.cursor-sword-enabled *::before,
+html.cursor-sword-enabled *::after {
+  cursor: url("https://cdn.cursors-4u.net/previews/arrow-825426cd-preview-32.webp") 0 0, auto !important;
+}
+
+#sword-cursor-effects {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  html.cursor-sword-enabled *,
+  html.cursor-sword-enabled *::before,
+  html.cursor-sword-enabled *::after {
+    cursor: auto !important;
+  }
+
+  #sword-cursor-effects {
+    display: none;
+  }
+}

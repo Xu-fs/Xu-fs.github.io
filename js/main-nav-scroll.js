@@ -17,7 +17,7 @@
     if (!siteInfo || siteInfo.querySelector(".hero-typewriter")) return;
 
     var lines = [
-      "\u795d\u4f60\u65e9\u3001\u5348\u3001\u665a\u5b89",
+      "\u795d\u4f60\u65e9\u5b89\u3001\u5348\u5b89\u3001\u665a\u5b89",
       "Good morning,good afternoon,and good night."
     ];
     var typewriter = document.createElement("div");
