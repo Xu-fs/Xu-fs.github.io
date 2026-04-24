@@ -1,50 +1,4 @@
 (function () {
-  if (/^\/x-?garge\/?/.test(window.location.pathname)) return;
-
-  function renderFriendNav() {
-    var nav = document.getElementById("nav");
-    if (!nav || nav.querySelector(".main-friend-nav")) return;
-
-    var wrapper = document.createElement("div");
-    wrapper.className = "main-friend-nav";
-    var friendText = "\u53cb\u94fe";
-    var visitText = "\u8bbf\u95ee\u7ad9\u70b9";
-    wrapper.innerHTML = [
-      '<button class="main-friend-toggle" type="button" aria-expanded="false">' + friendText + '</button>',
-      '<div class="main-friend-panel is-hidden">',
-      '<p class="main-friend-eyebrow">Friend Link</p>',
-      '<a class="main-friend-card" href="https://p1ggy929.github.io/" target="_blank" rel="noopener">',
-      '<strong class="main-friend-name">p1GgY</strong>',
-      '<span class="main-friend-url">https://p1ggy929.github.io/</span>',
-      '<span class="main-friend-action">' + visitText + '</span>',
-      '</a>',
-      "</div>"
-    ].join("");
-    nav.appendChild(wrapper);
-
-    var toggle = wrapper.querySelector(".main-friend-toggle");
-    var panel = wrapper.querySelector(".main-friend-panel");
-    wrapper.addEventListener("mouseenter", function () {
-      panel.classList.remove("is-hidden");
-      toggle.setAttribute("aria-expanded", "true");
-    });
-    wrapper.addEventListener("mouseleave", function () {
-      panel.classList.add("is-hidden");
-      toggle.setAttribute("aria-expanded", "false");
-    });
-    wrapper.addEventListener("focusin", function () {
-      panel.classList.remove("is-hidden");
-      toggle.setAttribute("aria-expanded", "true");
-    });
-    wrapper.addEventListener("focusout", function () {
-      window.setTimeout(function () {
-        if (wrapper.contains(document.activeElement)) return;
-        panel.classList.add("is-hidden");
-        toggle.setAttribute("aria-expanded", "false");
-      }, 0);
-    });
-  }
-
   function renderHeroTitle() {
     var title = document.getElementById("site-title");
     var text = "\u6b22\u8fce\u6765\u5230BIGe\u7684\u535a\u5ba2\uD83D\uDE0F";
@@ -64,7 +18,7 @@
 
     var lines = [
       "\u795d\u4f60\u65e9\u3001\u5348\u3001\u665a\u5b89",
-      "Good afternoon\uFF0Cgood evening\uFF0Cand good night."
+      "Good morning,good afternoon,and good night."
     ];
     var typewriter = document.createElement("div");
     typewriter.className = "hero-typewriter";
@@ -115,7 +69,6 @@
   }
 
   function initMainNav() {
-    renderFriendNav();
     renderHeroTitle();
     renderHeroTypewriter();
     updateMainNav();
