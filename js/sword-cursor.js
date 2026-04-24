@@ -24,16 +24,16 @@
   }
 
   function addTrail(x, y, burst) {
-    var count = burst ? 10 : 4;
+    var count = burst ? 12 : 5;
     for (var i = 0; i < count; i += 1) {
       particles.push({
         x: x + random(-3, 3),
         y: y + random(-3, 3),
-        vx: random(-0.85, 0.85),
-        vy: random(-1.35, 0.55),
-        size: burst ? random(2.2, 5.2) : random(1.3, 2.9),
-        life: burst ? random(34, 54) : random(22, 36),
-        maxLife: burst ? 54 : 36,
+        vx: random(-0.95, 0.95),
+        vy: random(-1.45, 0.6),
+        size: burst ? random(2.3, 5.4) : random(1.4, 3.1),
+        life: burst ? random(42, 68) : random(30, 48),
+        maxLife: burst ? 68 : 48,
         hue: burst ? random(190, 225) : random(200, 235)
       });
     }
