@@ -1,7 +1,7 @@
 (function () {
   var PAGE_SELECTOR = "#body-wrap.type-music #article-container .music-markdown";
-  var DEFAULT_REPO = "Xu-fs/Blog_Music";
-  var DEFAULT_BRANCH = "master";
+  var DEFAULT_REPO = "";
+  var DEFAULT_BRANCH = "";
   var I18N = {
     unknownArtist: "\u672a\u77e5\u6b4c\u624b",
     emptyDesc: "\u8fd9\u9996\u6b4c\u8fd8\u6ca1\u6709\u5199\u7b80\u4ecb\u3002",
@@ -44,6 +44,7 @@
   function resolveAssetUrl(value, repo, branch) {
     if (!value) return "";
     if (/^https?:\/\//i.test(value) || /^\/\//.test(value)) return value;
+    if (!repo) return "";
 
     var cleanPath = String(value).replace(/^\.?\//, "");
     return "https://cdn.jsdelivr.net/gh/" + repo + "@" + branch + "/" + cleanPath;
@@ -423,13 +424,10 @@
       "  </div>",
       '  <aside class="music-share-side">',
       '    <div class="music-side-card">',
-      '      <p class="music-side-eyebrow">\u8d44\u6e90\u4f9d\u8d56</p>',
+      '      <p class="music-side-eyebrow">\u97f3\u4e50\u4e13\u533a</p>',
       '      <h2 class="music-side-title">\u97f3\u4e50\u5206\u4eab</h2>',
       '      <p class="music-side-desc">\u8fd9\u4e2a\u677f\u5757\u662f\u97f3\u4e50\u4e13\u533a\u7684\u4e3b\u9875\uff0c\u98ce\u683c\u504f\u300c\u6b63\u5728\u64ad\u653e\u300d\u89c6\u56fe\u3002</p>',
-      '      <div class="music-side-meta"><span>' + I18N.repoLabel + '</span><strong>' + escapeHtml(repo) + "</strong></div>",
-      '      <div class="music-side-meta"><span>' + I18N.cdnLabel + '</span><strong>main / jsDelivr</strong></div>',
       '      <div class="music-side-meta"><span>\u66f2\u76ee</span><strong>' + tracks.length + I18N.songsSuffix + "</strong></div>",
-      '      <a class="music-side-link" href="https://cdn.jsdelivr.net/gh/' + escapeHtml(repo) + "@" + escapeHtml(branch) + '/" target="_blank" rel="noopener">jsDelivr</a>',
       "    </div>",
       "  </aside>",
       "</section>"
