@@ -1,7 +1,14 @@
 const { useEffect, useState } = React;
 
 const icon = (name, size = 18, extra = '') => <i data-lucide={name} width={size} height={size} className={extra} aria-hidden="true" />;
-const links = ['Movies', 'TV Series', "Editor's Pick", 'Interviews', 'User Reviews'];
+const links = [
+  { label: '首页', href: '/' },
+  { label: '文章', href: '/archives/' },
+  { label: '音乐', href: '/music/' },
+  { label: '足迹', href: '/archives/' },
+  { label: '车库', href: '/garage/' },
+  { label: '友链', href: '/friends/' }
+];
 
 function GlassButton({ children, className = '', ...props }) {
   return <button className={`liquid-glass inline-flex items-center justify-center gap-2 rounded-full text-sm text-white transition duration-300 hover:bg-white/10 ${className}`} {...props}>{children}</button>;
@@ -19,7 +26,7 @@ function App() {
       <nav className="relative z-50 flex items-center justify-between px-4 py-4 sm:px-6 md:px-12 md:py-6">
         <a href="#" className="animate-blur-fade-up text-xl font-semibold tracking-[-.08em] md:text-2xl" style={{animationDelay:'0ms'}}>PHOTOGRAPHY</a>
         <div className="hidden items-center gap-7 lg:flex">
-          {links.map((link,index) => <a key={link} href="#" className="animate-blur-fade-up text-sm text-white/90 transition-colors hover:text-gray-300" style={{animationDelay:`${100 + index * 50}ms`}}>{link}</a>)}
+          {links.map((link,index) => <a key={link.label} href={link.href} className="blog-nav-link animate-blur-fade-up text-white/90 transition-colors hover:text-gray-300" style={{animationDelay:`${100 + index * 50}ms`}}>{link.label}</a>)}
         </div>
         <div className="flex items-center gap-3">
           <GlassButton className="animate-blur-fade-up hidden px-4 py-2 sm:inline-flex md:px-6" style={{animationDelay:'350ms'}}>Search {icon('search')}</GlassButton>
@@ -32,7 +39,7 @@ function App() {
       </nav>
 
       <div className={`mobile-open absolute top-[72px] z-40 w-full border-y border-gray-800 bg-gray-900/95 p-3 shadow-2xl backdrop-blur-lg transition-all duration-500 ease-out lg:hidden ${menuOpen ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'}`}>
-        {links.map((link,index) => <a key={link} href="#" className="mobile-link block rounded-lg px-3 py-3 text-sm text-white transition-colors hover:bg-gray-800/50" style={{transitionDelay: menuOpen ? `${index * 50}ms` : '0ms'}}>{link}</a>)}
+        {links.map((link,index) => <a key={link.label} href={link.href} className="blog-nav-link mobile-link block rounded-lg px-3 py-3 text-white transition-colors hover:bg-gray-800/50" style={{transitionDelay: menuOpen ? `${index * 50}ms` : '0ms'}}>{link.label}</a>)}
         <div className="mt-2 flex gap-3 border-t border-gray-800 pt-3 sm:hidden">
           <GlassButton className="flex-1 px-4 py-2.5">Search {icon('search')}</GlassButton>
           <GlassButton aria-label="Profile" className="h-10 w-10">{icon('user')}</GlassButton>
@@ -47,7 +54,7 @@ function App() {
               <span className="flex items-center gap-2">{icon('clock',16)} 132 min</span>
               <span className="flex items-center gap-2">{icon('calendar-days',16)} April, 2025</span>
             </div>
-            <h1 className="animate-blur-fade-up mb-4 max-w-5xl text-3xl font-normal leading-[.96] tracking-[-.04em] sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl" style={{animationDelay:'400ms'}}>Step Through. Work Smarter.</h1>
+            <h1 className="photo-hero-title animate-blur-fade-up mb-4 max-w-5xl text-3xl font-normal leading-[.96] tracking-[-.04em] sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl" style={{animationDelay:'400ms'}}>Evolve with every step.</h1>
             <p className="animate-blur-fade-up mb-6 max-w-2xl text-base text-gray-400 sm:text-lg md:mb-12 md:text-xl" style={{animationDelay:'500ms'}}>A voyage through forgotten realms, where past and future intertwine.</p>
             <div className="flex flex-wrap gap-3 sm:gap-4">
               <button className="animate-blur-fade-up inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-medium text-black transition hover:bg-gray-200 sm:px-8 sm:py-3" style={{animationDelay:'600ms'}}>Watch Now {icon('play',18,'fill-black')}</button>
@@ -58,6 +65,13 @@ function App() {
             <GlassButton className="animate-blur-fade-up px-4 py-2.5 sm:px-6 sm:py-3" style={{animationDelay:'800ms'}}>{icon('chevron-left')} Previous</GlassButton>
             <GlassButton className="animate-blur-fade-up px-4 py-2.5 sm:px-6 sm:py-3" style={{animationDelay:'900ms'}}>Next {icon('chevron-right')}</GlassButton>
           </div>
+        </div>
+        <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 justify-center gap-4 md:bottom-16">
+          <a href="action" className="liquid-glass preset-glass-square animate-blur-fade-up flex h-60 w-60 flex-col items-center justify-center rounded-2xl px-3 pt-4 no-underline transition-transform duration-300 hover:scale-[1.025] sm:h-72 sm:w-72 sm:px-4 sm:pt-5" style={{animationDelay:'300ms'}} aria-label="Open DJI Osmo Action 6 page">
+            <img src="assets/osmo-action-6.png" alt="DJI Osmo Action 6 camera" className="h-[72%] w-full object-contain" />
+            <span className="mt-1 text-center text-[11px] font-medium leading-tight text-white/90 sm:mt-2 sm:text-sm">大疆 <strong className="font-semibold">Osmo Action 6</strong></span>
+          </a>
+          <div className="liquid-glass preset-glass-square animate-blur-fade-up h-60 w-60 rounded-2xl sm:h-72 sm:w-72" style={{animationDelay:'300ms'}} aria-label="Reserved glass slot" />
         </div>
       </main>
     </div>

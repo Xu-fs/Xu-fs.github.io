@@ -15,23 +15,22 @@
   width: 100% !important;
   height: 56px !important;
   padding: 0 40px !important;
-  background: #5de3ea !important;
-  box-shadow: 0 3px 12px rgba(24, 126, 139, 0.16) !important;
+  background: transparent !important;
+  box-shadow: none !important;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   transform: translateY(0) !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-  transition: background 0.42s ease, box-shadow 0.42s ease, backdrop-filter 0.42s ease, -webkit-backdrop-filter 0.42s ease !important;
+  transition: background 0.28s ease, box-shadow 0.28s ease !important;
   z-index: 1000 !important;
 }
 
 body.main-nav-visible #page-header #nav {
-  background: rgba(255, 255, 255, 0.10) !important;
-  background-blend-mode: luminosity;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.42), inset 0 -1px 1px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(15, 61, 72, 0.16) !important;
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background: rgba(34, 86, 122, 0.92) !important;
+  box-shadow: 0 10px 28px rgba(10, 35, 55, 0.26) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 #page-header #nav a,
