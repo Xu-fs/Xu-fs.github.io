@@ -65,7 +65,7 @@
   }
 
   function updateMainNav() {
-    document.body.classList.toggle("main-nav-visible", window.scrollY > 8);
+    document.body.classList.toggle("main-nav-visible", window.scrollY > 20);
   }
 
   function initMainNav() {
